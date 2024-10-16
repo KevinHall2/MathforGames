@@ -71,7 +71,10 @@ namespace MathLibrary
             return !(left == right);
         }
 
-
+        public static Vector3 CrossProduct(Vector3 left, Vector3 right)
+        {
+            return new Vector3((left.y * right.z) - (left.z * right.y), (left.z * right.x) - (left.x * right.z), (left.x * right.y) - (left.y * right.x));
+        }
 
         //operator overload for addition
         public static Vector3 operator +(Vector3 left, Vector3 right)

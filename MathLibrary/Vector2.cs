@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Numerics;
+using System.Runtime.InteropServices;
 
 namespace MathLibrary
 {
@@ -57,6 +58,16 @@ namespace MathLibrary
         public override string ToString()
         {
             return "(" + x + "," + y + ")";
+        }
+
+        public float DotProduct(Vector2 other)
+        {
+            return (x * other.x) + (y * other.y); 
+        }
+
+        public float Distance(Vector2 other)
+        {
+            return (other - this).Magnitude;
         }
 
         public static bool operator ==(Vector2 left, Vector2 right)
