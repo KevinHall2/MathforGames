@@ -56,11 +56,15 @@ namespace MathLibrary
             return this;
         }
 
-        public override string ToString()
+        public string ToString()
         {
             return "(" + x + "," + y + "," + z + ")";
         }
 
+        public static float DotProduct(Vector3 left, Vector3 right)
+        {
+            return (left.x * right.x) + (left.y * right.y) + (left.z * right.z);
+        }
         public static bool operator ==(Vector3 left, Vector3 right)
         {
             return (left.x == right.x) && (left.y == right.y) && (left.z == right.z);

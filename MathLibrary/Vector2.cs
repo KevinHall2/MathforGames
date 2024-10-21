@@ -55,6 +55,7 @@ namespace MathLibrary
             return this;
         }
 
+
         public override string ToString()
         {
             return "(" + x + "," + y + ")";
@@ -70,11 +71,13 @@ namespace MathLibrary
             return (other - this).Magnitude;
         }
 
+        //operator overload for "is equal to"
         public static bool operator ==(Vector2 left, Vector2 right)
         {
             return (left.x == right.x) && (left.y == right.y);
         }
 
+        //operator overload for "is not equal to"
         public static bool operator !=(Vector2 left, Vector2 right)
         {
             return !(left == right);
