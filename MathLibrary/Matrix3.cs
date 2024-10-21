@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,9 +35,25 @@ namespace MathLibrary
             
             get
             {
-                Matrix3 identityMatrix = new Matrix3(1, 0, 0, 0, 1, 0, 0, 0, 1);
-                return new Matrix3();
+                return new Matrix3
+                    (1, 0, 0, 
+                    0, 1, 0, 
+                    0, 0, 1);
             }
+        }
+
+        public Matrix3 Identified
+        {
+            get
+            {
+                return this * Identity;
+            }
+        }
+
+        public Matrix3 Identify()
+        {
+            this = Identified;
+            return this;
         }
 
         //operator overload for addition
