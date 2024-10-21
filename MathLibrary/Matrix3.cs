@@ -42,13 +42,17 @@ namespace MathLibrary
         //operator overload for addition
         public static Matrix3 operator +(Matrix3 a, Matrix3 b)
         {
-            return new Matrix3();
+            return new Matrix3(a.m00 + b.m00, a.m01 + b.m01, a.m02 + b.m02,
+                                a.m10 + b.m10, a.m11 + b.m11, a.m12 + b.m12,
+                                a.m20 + b.m20, a.m21 + b.m21, a.m22 + b.m22);
         }
 
         //operator overload for subtraction
         public static Matrix3 operator -(Matrix3 a, Matrix3 b)
         {
-            return new Matrix3();
+            return new Matrix3(a.m00 - b.m00, a.m01 - b.m01, a.m02 - b.m02,
+                                a.m10 - b.m10, a.m11 - b.m11, a.m12 - b.m12,
+                                a.m20 - b.m20, a.m21 - b.m21, a.m22 - b.m22);
         }
 
         //operator overload for multiplication
