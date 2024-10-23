@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace MathLibrary
 {
+
+    // need matrix3 * vector3
+    // need matrix4 with create rotation xyz(float)
+    // need matrix4 * vector4
     public struct Matrix3
     {
         public float
@@ -28,6 +32,22 @@ namespace MathLibrary
             this.m20 = m20;
             this.m21 = m21;
             this.m22 = m22;
+        }
+
+        
+        public static Matrix3 CreateTranslation(float x, float y)
+        {
+            return new Matrix3();
+        }
+
+        public static Matrix3 CreateScale(float x, float y)
+        {
+            return new Matrix3();
+        }
+
+        public static Matrix3 CreateRotation(float radians)
+        {
+            return new Matrix3();
         }
 
         public static Matrix3 Identity

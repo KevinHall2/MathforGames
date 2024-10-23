@@ -65,6 +65,12 @@ namespace MathLibrary
         {
             return (left.x * right.x) + (left.y * right.y) + (left.z * right.z);
         }
+
+        public float DotProduct(Vector3 other)
+        {
+           return (x * other.x) + (y * other.y) + (z * other.z);
+        }
+
         public static bool operator ==(Vector3 left, Vector3 right)
         {
             return (left.x == right.x) && (left.y == right.y) && (left.z == right.z);
@@ -78,6 +84,11 @@ namespace MathLibrary
         public static Vector3 CrossProduct(Vector3 left, Vector3 right)
         {
             return new Vector3((left.y * right.z) - (left.z * right.y), (left.z * right.x) - (left.x * right.z), (left.x * right.y) - (left.y * right.x));
+        }
+
+        public Vector3 CrossProduct(Vector3 other)
+        {
+            return new Vector3((y * other.z) - (z * other.y), (z * other.x) - (x * other.z), (x * other.y) - (y * other.x));
         }
 
         //operator overload for addition
@@ -102,6 +113,11 @@ namespace MathLibrary
         public static Vector3 operator *(Vector3 left, float scalar)
         {
             return new Vector3(left.x * scalar, left.y * scalar, left.z * scalar);
+        }
+
+        public static Vector3 operator *(float scalar, Vector3 right)
+        {
+            return new Vector3(scalar * right.x, scalar * right.y, scalar * right.z);
         }
 
         //operator overload for division
