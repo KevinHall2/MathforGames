@@ -26,10 +26,10 @@ namespace MathLibrary
         {
             get
             {
-                //c = sqrt(x^2 + y^2)
+                //c = sqrt(x^2 + y^2 + z^2)
                 return (float)
                     Math.Abs(Math.Sqrt
-                    (Math.Pow(x, 2) + Math.Pow(y, 2)
+                    (Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2)
                     )
                     );
             }
@@ -56,7 +56,7 @@ namespace MathLibrary
             return this;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return "(" + x + "," + y + "," + z + ")";
         }

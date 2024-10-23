@@ -16,7 +16,7 @@ const float DEFAULT_TOLERANCE = 0.0001f;
                 );
         }
 
-        Matrix4 Transpose(Matrix4 mat)
+        Matrix3 Transpose(Matrix3 mat)
         {
             return new Matrix4
                 (
@@ -36,7 +36,7 @@ const float DEFAULT_TOLERANCE = 0.0001f;
             return result;
         }
 
-        string Matrix4ToString(Matrix4 mat)
+        string Matrix4ToString(Matrix3 mat)
         {
             string result = mat.m00 + " " + mat.m01 + " " + mat.m02 + " " + mat.m03 + "\n" +
                             mat.m10 + " " + mat.m11 + " " + mat.m12 + " " + mat.m13 + "\n" +
@@ -95,7 +95,7 @@ const float DEFAULT_TOLERANCE = 0.0001f;
             return true;
         }
 
-        bool compare(Matrix4 a, Matrix4 b, float tolerance = DEFAULT_TOLERANCE)
+        bool compare(Matrix3 a, Matrix3 b, float tolerance = DEFAULT_TOLERANCE)
         {
             if (Math.Abs(a.m00 - b.m00) > tolerance || Math.Abs(a.m01 - b.m01) > tolerance || Math.Abs(a.m02 - b.m02) > tolerance || Math.Abs(a.m03 - b.m03) > tolerance ||
                 Math.Abs(a.m10 - b.m10) > tolerance || Math.Abs(a.m11 - b.m11) > tolerance || Math.Abs(a.m12 - b.m12) > tolerance || Math.Abs(a.m13 - b.m13) > tolerance ||
@@ -264,12 +264,12 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         [TestMethod]
         public void Matrix4SetRotateX()
         {
-            Matrix4 m4a = new Matrix4();
-            m4a = Matrix4.CreateRotationX(4.5f);
+            Matrix3 m4a = new Matrix3();
+            m4a = Matrix3.CreateRotationX(4.5f);
 
             m4a = Transpose(m4a);
 
-            Matrix4 expected = new Matrix4(1, 0, 0, 0, 0, -0.210796f, -0.97753f, 0, 0, 0.97753f, -0.210796f, 0, 0, 0, 0, 1);
+            Matrix3 expected = new Matrix4(1, 0, 0, 0, 0, -0.210796f, -0.97753f, 0, 0, 0.97753f, -0.210796f, 0, 0, 0, 0, 1);
             Assert.IsTrue(compare(m4a,
                 new Matrix4(1, 0, 0, 0, 0, -0.210796f, -0.97753f, 0, 0, 0.97753f, -0.210796f, 0, 0, 0, 0, 1)), "Expected: " + Matrix4ToString(expected) + "\n" + "Received: " + Matrix4ToString(m4a));
         }
@@ -277,12 +277,12 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         [TestMethod]
         public void Matrix4SetRotateY()
         {
-            Matrix4 m4b = new Matrix4();
-            m4b = Matrix4.CreateRotationY(-2.6f);
+            Matrix3 m4b = new Matrix3();
+            m4b = Matrix3.CreateRotationY(-2.6f);
 
             m4b = Transpose(m4b);
 
-            Matrix4 expected = new Matrix4(-0.856889f, 0, 0.515501f, 0, 0, 1, 0, 0, -0.515501f, 0, -0.856889f, 0, 0, 0, 0, 1);
+            Matrix3 expected = new Matrix4(-0.856889f, 0, 0.515501f, 0, 0, 1, 0, 0, -0.515501f, 0, -0.856889f, 0, 0, 0, 0, 1);
             Assert.IsTrue(compare(m4b,
                 new Matrix4(-0.856889f, 0, 0.515501f, 0, 0, 1, 0, 0, -0.515501f, 0, -0.856889f, 0, 0, 0, 0, 1)), "Expected: " + Matrix4ToString(expected) + "\n" + "Received: " + Matrix4ToString(m4b));
         }
@@ -303,12 +303,12 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         [TestMethod]
         public void Matrix4SetRotateZ()
         {
-            Matrix4 m4c = new Matrix4();
-            m4c = Matrix4.CreateRotationZ(0.72f);
+            Matrix3 m4c = new Matrix3();
+            m4c = Matrix3.CreateRotationZ(0.72f);
 
             m4c = Transpose(m4c);
 
-            Matrix4 expected = new Matrix4(0.751806f, 0.659385f, 0, 0, -0.659385f, 0.751806f, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            Matrix3 expected = new Matrix4(0.751806f, 0.659385f, 0, 0, -0.659385f, 0.751806f, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
             Assert.IsTrue(compare(m4c,
                 new Matrix4(0.751806f, 0.659385f, 0, 0, -0.659385f, 0.751806f, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)), "Expected: " + Matrix4ToString(expected) + "\n" + "Received: " + Matrix4ToString(m4c));
         }
@@ -332,8 +332,8 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         [TestMethod]
         public void Vector4MatrixTransform()
         {
-            Matrix4 m4b = new Matrix4();
-            m4b = Matrix4.CreateRotationY(-2.6f);
+            Matrix3 m4b = new Matrix3();
+            m4b = Matrix3.CreateRotationY(-2.6f);
 
             //m4b = Transpose(m4b);
 
@@ -348,8 +348,8 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         [TestMethod]
         public void Vector4MatrixTransform2()
         {
-            Matrix4 m4c = new Matrix4();
-            m4c = Matrix4.CreateRotationZ(0.72f);
+            Matrix3 m4c = new Matrix3();
+            m4c = Matrix3.CreateRotationZ(0.72f);
 
             //m4c = Transpose(m4c);
 
@@ -381,17 +381,17 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         [TestMethod]
         public void Matrix4Multiply()
         {
-            Matrix4 m4b = new Matrix4();
-            m4b = Matrix4.CreateRotationY(-2.6f);
+            Matrix3 m4b = new Matrix3();
+            m4b = Matrix3.CreateRotationY(-2.6f);
             m4b = Transpose(m4b);
 
-            Matrix4 m4c = new Matrix4();
-            m4c = Matrix4.CreateRotationZ(0.72f);
+            Matrix3 m4c = new Matrix3();
+            m4c = Matrix3.CreateRotationZ(0.72f);
             m4c = Transpose(m4c);
 
-            Matrix4 m4d = m4c * m4b;
+            Matrix3 m4d = m4c * m4b;
 
-            Matrix4 expected = new Matrix4(-0.644213855267f, 0.659384668f, 0.3875569210f, 0, 0.5650192710f, 0.751805722713f, -0.3399137459f, 0, -0.51550144f, 0, -0.856888711452f, 0, 0, 0, 0, 1);
+            Matrix3 expected = new Matrix4(-0.644213855267f, 0.659384668f, 0.3875569210f, 0, 0.5650192710f, 0.751805722713f, -0.3399137459f, 0, -0.51550144f, 0, -0.856888711452f, 0, 0, 0, 0, 1);
             Assert.IsTrue(compare(m4d, expected), "Expected: \n" + Matrix4ToString(expected) + "\n" + "Received: \n" + Matrix4ToString(m4d));
         }
 
@@ -418,7 +418,7 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         public void Vector4MatrixTranslation()
         {
             // homogeneous point translation
-            Matrix4 m4b = new Matrix4(1, 0, 0, 0,
+            Matrix3 m4b = new Matrix4(1, 0, 0, 0,
                                         0, 1, 0, 0,
                                         0, 0, 1, 0,
                                         55, 44, 99, 1);
@@ -436,7 +436,7 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         public void Vector4MatrixTranslation2()
         {
             // homogeneous point translation
-            Matrix4 m4c = Matrix4.CreateRotationZ(2.2f);
+            Matrix3 m4c = Matrix3.CreateRotationZ(2.2f);
 
             //m4c = Transpose(m4c);
             m4c.m03 = 55; m4c.m13 = 44; m4c.m23 = 99; m4c.m33 = 1;
@@ -470,7 +470,7 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         public void Vector4MatrixTranslation3()
         {
             // homogeneous point translation
-            Matrix4 m4b = new Matrix4(1, 0, 0, 0,
+            Matrix3 m4b = new Matrix4(1, 0, 0, 0,
                                         0, 1, 0, 0,
                                         0, 0, 1, 0,
                                         55, 44, 99, 1);
@@ -488,7 +488,7 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         public void Vector4MatrixTranslation4()
         {
             // homogeneous point translation
-            Matrix4 m4c = Matrix4.CreateRotationZ(2.2f);
+            Matrix3 m4c = Matrix3.CreateRotationZ(2.2f);
             //m4c = Transpose(m4c);
             m4c.m03 = 55; m4c.m13 = 44; m4c.m23 = 99; m4c.m33 = 1;
 

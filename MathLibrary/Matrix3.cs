@@ -105,8 +105,8 @@ namespace MathLibrary
                 (a.m20 * b.m00) + (a.m21 * b.m10) + (a.m22 * b.m20), (a.m20 * b.m01) + (a.m21 * b.m11) + (a.m22 * b.m21), (a.m20 * b.m02) + (a.m21 * b.m12) + (a.m22 * b.m22));
         }
 
-        //to use this function: console.writeline(variableName.ToString());
-        public string ToString()
+        //to use this function for testing at least: console.writeline(variableName.ToString());
+        public override string ToString()
         {
             return m00 + "," + m01 + "," + m02 + "," + "\n" +
                    m10 + "," + m11 + "," + m12 + "," + "\n" +
