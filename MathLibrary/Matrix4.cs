@@ -50,6 +50,15 @@ namespace MathLibrary
             return new Matrix4();
         }
 
+        //to use this function for testing at least: console.writeline(variableName.ToString());
+        public override string ToString()
+        {
+            return m00 + "," + m01 + "," + m02 + "," + m03 + "," + "\n" +
+                   m10 + "," + m11 + "," + m12 + "," + m13 + "," + "\n" +
+                   m20 + "," + m21 + "," + m22 + "," + m23 + "," + "\n" +
+                   m30 + "," + m31 + "," + m32 + "," + m33;
+        }
+
         public static Matrix4 Identity
         {
 
@@ -129,14 +138,19 @@ namespace MathLibrary
                             (a.m30 * b.m02) + (a.m31 * b.m12) + (a.m32 * b.m22) + (a.m33 * b.m32),                (a.m30 * b.m03) + (a.m31 * b.m13) + (a.m32 * b.m23) + (a.m33 * b.m33));
         }
 
-        //to use this function for testing at least: console.writeline(variableName.ToString());
-        public override string ToString()
+        public static Vector4 operator *(Matrix4 a, Vector4 b)
         {
-            return m00 + "," + m01 + "," + m02 + "," + m03 + "," + "\n" +
-                   m10 + "," + m11 + "," + m12 + "," + m13 + "," + "\n" +
-                   m20 + "," + m21 + "," + m22 + "," + m23 + "," + "\n" +
-                   m30 + "," + m31 + "," + m32 + "," + m33;
+            return new Vector4((b.x * a.m00) + (b.y * a.m01) + (b.z * a.m02) + (b.w * a.m03),
+                               (b.x * a.m10) + (b.y * a.m11) + (b.z * a.m12) + (b.w * a.m13),
+                               (b.x * a.m20) + (b.y * a.m21) + (b.z * a.m22) + (b.w * a.m23),
+                               (b.x * a.m30) + (b.y * a.m31) + (b.z * a.m32) + (b.w * a.m33));
         }
+
+        public static Vector4 operator *(Vector4 a, Matrix4 b)
+        {
+            return b * a;
+        }
+
 
     }
 }
