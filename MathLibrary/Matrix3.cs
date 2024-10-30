@@ -40,7 +40,9 @@ namespace MathLibrary
             Matrix3 translationMatrix = new Matrix3(1, 0, 0,
                                                     0, 1, 0,
                                                     0, 0, 1);
-            return new Matrix3();
+            return new Matrix3(translationMatrix.m00 + x, translationMatrix.m01 + y, x,
+                               translationMatrix.m10 + x, translationMatrix.m11 + y, y,
+                                                  0,                         0,      1);
         }
 
         public static Matrix3 CreateScale(float x, float y)

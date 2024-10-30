@@ -35,12 +35,12 @@ namespace MathLibrary
         }
 
 
-        public static Matrix4 CreateTranslation(float x, float y)
+        public static Matrix4 CreateTranslation(float x, float y, float z)
         {
             return new Matrix4();
         }
 
-        public static Matrix4 CreateScale(float x, float y)
+        public static Matrix4 CreateScale(float x, float y, float z)
         {
             return new Matrix4();
         }
