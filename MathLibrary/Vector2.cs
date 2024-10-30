@@ -25,13 +25,7 @@ namespace MathLibrary
             get
             {
                 //c = sqrt(x^2 + y^2)
-                return (float)
-                    Math.Abs
-                    (Math.Sqrt
-                    (Math.Pow
-                    (x, 2) + Math.Pow(y, 2)
-                    )
-                    );
+                return (float)Math.Abs(Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2)));
             }
         }
 
@@ -39,6 +33,8 @@ namespace MathLibrary
         {
             get
             {
+                if (Magnitude == 0)
+                    return new Vector2();
                 return this / Magnitude;
             }
         }

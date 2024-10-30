@@ -12,8 +12,9 @@ namespace MathLibrary
     using System.Text;
     using System.Threading.Tasks;
     using System.Numerics;
+    using System.Reflection.Metadata.Ecma335;
 
-        public struct Vector4
+    public struct Vector4
         {
 
             public float x;
@@ -35,11 +36,7 @@ namespace MathLibrary
                 get
                 {
                     //c = sqrt(x^2 + y^2)
-                    return (float)
-                        Math.Abs(Math.Sqrt
-                        (Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2) + Math.Pow(w, 2)
-                        )
-                        );
+                    return (float)Math.Abs(Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2) + Math.Pow(w, 2)));
                 }
             }
 
@@ -47,6 +44,11 @@ namespace MathLibrary
             {
                 get
                 {
+                    if (Magnitude == 0)
+                     {
+                         return new Vector4();
+                     }
+                   
                     return this / Magnitude;
                 }
             }
@@ -90,7 +92,7 @@ namespace MathLibrary
                 return !(left == right);
             }
 
-            public static Vector4 CrossProduct(Vector4 left, Vector4 right)
+            public Vector4 CrossProduct(Vector4 left, Vector4 right)
             {
                 return new Vector4((left.y * right.z) - (left.z * right.y), (left.z * right.x) - (left.x * right.z), 
                     (left.x * right.y) - (left.y * right.x), (left.w * right.x) - (left.x * right.w));

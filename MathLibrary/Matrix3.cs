@@ -37,12 +37,11 @@ namespace MathLibrary
 
         public static Matrix3 CreateTranslation(float x, float y)
         {
-            Matrix3 translationMatrix = new Matrix3(1, 0, 0,
-                                                    0, 1, 0,
-                                                    0, 0, 1);
+            Matrix3 translationMatrix = new Matrix3();
+            translationMatrix.Identify();
             return new Matrix3(translationMatrix.m00 + x, translationMatrix.m01 + y, x,
                                translationMatrix.m10 + x, translationMatrix.m11 + y, y,
-                                                  0,                         0,      1);
+                               translationMatrix.m20 * 0, translationMatrix.m21 * 0, 1);
         }
 
         public static Matrix3 CreateScale(float x, float y)

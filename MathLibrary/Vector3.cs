@@ -27,11 +27,7 @@ namespace MathLibrary
             get
             {
                 //c = sqrt(x^2 + y^2 + z^2)
-                return (float)
-                    Math.Abs(Math.Sqrt
-                    (Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2)
-                    )
-                    );
+                return (float)Math.Abs(Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2)));
             }
         }
 
@@ -39,6 +35,8 @@ namespace MathLibrary
         {
             get
             {
+                if (Magnitude == 0)
+                    return new Vector3();
                 return this / Magnitude;
             }
         }
@@ -81,14 +79,14 @@ namespace MathLibrary
             return !(left == right);
         }
 
-        public static Vector3 CrossProduct(Vector3 left, Vector3 right)
+        public Vector3 CrossProduct(Vector3 left, Vector3 right)
         {
             return new Vector3((left.y * right.z) - (left.z * right.y), (left.z * right.x) - (left.x * right.z), (left.x * right.y) - (left.y * right.x));
         }
 
         public Vector3 CrossProduct(Vector3 other)
         {
-            return new Vector3((y * other.z) - (z * other.y), (z * other.x) - (x * other.z), (x * other.y) - (y * other.x));
+            return new Vector3((this.y * other.z) - (this.z * other.y), (this.z * other.x) - (this.x * other.z), (this.x * other.y) - (this.y * other.x));
         }
 
         //operator overload for addition
