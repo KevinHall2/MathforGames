@@ -39,20 +39,39 @@ namespace MathLibrary
         {
             Matrix4 translationMatrix = new Matrix4();
             translationMatrix.Identify();
-            return new Matrix4(translationMatrix.m00 + x, translationMatrix.m01 + y, translationMatrix.m02 + z, x,
-                               translationMatrix.m10 + x, translationMatrix.m11 + y, translationMatrix.m12 + z, y,
-                               translationMatrix.m20 + x, translationMatrix.m21 + y, translationMatrix.m22 + z, z,
-                               translationMatrix.m30 * 0, translationMatrix.m31 * 0, translationMatrix.m32 * 0, 1);
+            return new Matrix4(translationMatrix.m00 + x, translationMatrix.m01 + y, translationMatrix.m02 + z, translationMatrix.m03,
+                               translationMatrix.m10 + x, translationMatrix.m11 + y, translationMatrix.m12 + z, translationMatrix.m13,
+                               translationMatrix.m20 + x, translationMatrix.m21 + y, translationMatrix.m22 + z, translationMatrix.m23,
+                               translationMatrix.m30 + x, translationMatrix.m31 + y, translationMatrix.m32 + z, translationMatrix.m33);
         }
 
         public static Matrix4 CreateScale(float x, float y, float z)
         {
-            return new Matrix4();
+            Matrix4 scaledMatrix = new Matrix4();
+            scaledMatrix.Identify();
+            return new Matrix4(scaledMatrix.m00 * x, scaledMatrix.m01, scaledMatrix.m02, scaledMatrix.m03,
+                               scaledMatrix.m10,  scaledMatrix.m11 * y, scaledMatrix.m12, scaledMatrix.m13,
+                               scaledMatrix.m20, scaledMatrix.m21, scaledMatrix.m22 * z, scaledMatrix.m23,
+                               scaledMatrix.m30, scaledMatrix.m31, scaledMatrix.m32, scaledMatrix.m33);
         }
 
-        public static Matrix4 CreateRotation(float radians)
+        public static Matrix4 CreateRotationX(float radians)
         {
-            return new Matrix4();
+            Matrix4 rotatedMatrix = new Matrix4();
+
+            float xRot = Math.Cos(radians);
+            float yRot = ;
+
+
+
+            rotatedMatrix.Identify();
+            return new Matrix4(rotatedMatrix.m00, rotatedMatrix.m01, rotatedMatrix.m02, rotatedMatrix.m03,
+                               rotatedMatrix.m10, (double)(Math.Cos(radians)), rotatedMatrix.m12, rotatedMatrix.m13,
+                               rotatedMatrix.m20, rotatedMatrix.m21, rotatedMatrix.m22, rotatedMatrix.m23,
+                               rotatedMatrix.m30, rotatedMatrix.m31, rotatedMatrix.m32, rotatedMatrix.m33);
+
+
+            // rotatedMatrix.m11 = Math.Cos(radians),
         }
 
         //to use this function for testing at least: console.writeline(variableName.ToString());

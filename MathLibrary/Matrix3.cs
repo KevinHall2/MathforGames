@@ -39,14 +39,18 @@ namespace MathLibrary
         {
             Matrix3 translationMatrix = new Matrix3();
             translationMatrix.Identify();
-            return new Matrix3(translationMatrix.m00 + x, translationMatrix.m01 + y, x,
-                               translationMatrix.m10 + x, translationMatrix.m11 + y, y,
-                               translationMatrix.m20 * 0, translationMatrix.m21 * 0, 1);
+            return new Matrix3(translationMatrix.m00 + x, translationMatrix.m01 + y, translationMatrix.m02,
+                               translationMatrix.m10 + x, translationMatrix.m11 + y, translationMatrix.m12,
+                               translationMatrix.m20 + x, translationMatrix.m21 + y, translationMatrix.m22);
         }
 
         public static Matrix3 CreateScale(float x, float y)
         {
-            return new Matrix3();
+            Matrix3 scaledMatrix = new Matrix3();
+            scaledMatrix.Identify();
+            return new Matrix3(scaledMatrix.m00 * x, scaledMatrix.m01, scaledMatrix.m02,
+                               scaledMatrix.m10,   scaledMatrix.m11 * y, scaledMatrix.m12,
+                               scaledMatrix.m20,     scaledMatrix.m21,  scaledMatrix.m22);
         }
 
         public static Matrix3 CreateRotation(float radians)

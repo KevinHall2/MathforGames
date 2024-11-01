@@ -266,12 +266,12 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         [TestMethod]
         public void Matrix4SetRotateX()
         {
-            Matrix3 m4a = new Matrix3();
-            m4a = Matrix3.CreateRotationX(4.5f);
+            Matrix4 m4a = new Matrix4();
+            m4a = Matrix4.CreateRotationX(4.5f);
 
             m4a = Transpose(m4a);
 
-            Matrix3 expected = new Matrix4(1, 0, 0, 0, 0, -0.210796f, -0.97753f, 0, 0, 0.97753f, -0.210796f, 0, 0, 0, 0, 1);
+            Matrix4 expected = new Matrix4(1, 0, 0, 0, 0, -0.210796f, -0.97753f, 0, 0, 0.97753f, -0.210796f, 0, 0, 0, 0, 1);
             Assert.IsTrue(compare(m4a,
                 new Matrix4(1, 0, 0, 0, 0, -0.210796f, -0.97753f, 0, 0, 0.97753f, -0.210796f, 0, 0, 0, 0, 1)), "Expected: " + Matrix4ToString(expected) + "\n" + "Received: " + Matrix4ToString(m4a));
         }
@@ -279,12 +279,12 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         [TestMethod]
         public void Matrix4SetRotateY()
         {
-            Matrix3 m4b = new Matrix3();
-            m4b = Matrix3.CreateRotationY(-2.6f);
+            Matrix4 m4b = new Matrix4();
+            m4b = Matrix4.CreateRotationY(-2.6f);
 
             m4b = Transpose(m4b);
 
-            Matrix3 expected = new Matrix4(-0.856889f, 0, 0.515501f, 0, 0, 1, 0, 0, -0.515501f, 0, -0.856889f, 0, 0, 0, 0, 1);
+            Matrix4 expected = new Matrix4(-0.856889f, 0, 0.515501f, 0, 0, 1, 0, 0, -0.515501f, 0, -0.856889f, 0, 0, 0, 0, 1);
             Assert.IsTrue(compare(m4b,
                 new Matrix4(-0.856889f, 0, 0.515501f, 0, 0, 1, 0, 0, -0.515501f, 0, -0.856889f, 0, 0, 0, 0, 1)), "Expected: " + Matrix4ToString(expected) + "\n" + "Received: " + Matrix4ToString(m4b));
         }
@@ -305,12 +305,12 @@ const float DEFAULT_TOLERANCE = 0.0001f;
         [TestMethod]
         public void Matrix4SetRotateZ()
         {
-            Matrix3 m4c = new Matrix3();
-            m4c = Matrix3.CreateRotationZ(0.72f);
+            Matrix4 m4c = new Matrix4();
+            m4c = Matrix4.CreateRotationZ(0.72f);
 
             m4c = Transpose(m4c);
 
-            Matrix3 expected = new Matrix4(0.751806f, 0.659385f, 0, 0, -0.659385f, 0.751806f, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            Matrix4 expected = new Matrix4(0.751806f, 0.659385f, 0, 0, -0.659385f, 0.751806f, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
             Assert.IsTrue(compare(m4c,
                 new Matrix4(0.751806f, 0.659385f, 0, 0, -0.659385f, 0.751806f, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)), "Expected: " + Matrix4ToString(expected) + "\n" + "Received: " + Matrix4ToString(m4c));
         }
