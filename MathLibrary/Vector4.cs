@@ -95,13 +95,13 @@ namespace MathLibrary
             public Vector4 CrossProduct(Vector4 left, Vector4 right)
             {
                 return new Vector4((left.y * right.z) - (left.z * right.y), (left.z * right.x) - (left.x * right.z), 
-                    (left.x * right.y) - (left.y * right.x), (left.w * right.x) - (left.x * right.w));
+                                   (left.x * right.y) - (left.y * right.x), (left.w * right.x) - (left.x * right.w));
             }
 
             public Vector4 CrossProduct(Vector4 other)
             {
                 return new Vector4((y * other.z) - (z * other.y), (z * other.x) - (x * other.z), 
-                    (x * other.y) - (y * other.x), (w * other.x) - (x * other.w));
+                                   (x * other.y) - (y * other.x), 0);
             }
 
             //operator overload for addition

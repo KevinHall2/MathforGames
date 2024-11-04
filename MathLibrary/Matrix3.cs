@@ -38,16 +38,16 @@ namespace MathLibrary
         public static Matrix3 CreateTranslation(float x, float y)
         {
             Matrix3 translationMatrix = new Matrix3();
-            translationMatrix.Identify();
-            return new Matrix3(translationMatrix.m00 + x, translationMatrix.m01 + y, translationMatrix.m02,
-                               translationMatrix.m10 + x, translationMatrix.m11 + y, translationMatrix.m12,
-                               translationMatrix.m20 + x, translationMatrix.m21 + y, translationMatrix.m22);
+            translationMatrix.Identify3();
+            return new Matrix3(translationMatrix.m00 + x, translationMatrix.m01 + x, translationMatrix.m02,
+                               translationMatrix.m10 + y, translationMatrix.m11 + y, translationMatrix.m12,
+                               translationMatrix.m20, translationMatrix.m21, translationMatrix.m22);
         }
 
         public static Matrix3 CreateScale(float x, float y)
         {
             Matrix3 scaledMatrix = new Matrix3();
-            scaledMatrix.Identify();
+            scaledMatrix.Identify3();
             return new Matrix3(scaledMatrix.m00 * x, scaledMatrix.m01, scaledMatrix.m02,
                                scaledMatrix.m10,   scaledMatrix.m11 * y, scaledMatrix.m12,
                                scaledMatrix.m20,     scaledMatrix.m21,  scaledMatrix.m22);
@@ -55,7 +55,15 @@ namespace MathLibrary
 
         public static Matrix3 CreateRotation(float radians)
         {
-            return new Matrix3();
+            Matrix3 rotatedMatrix = new Matrix3();
+
+            float cosRotation = (float)Math.Cos(radians);
+            float sinRotation = (float)Math.Sin(radians);
+            float negSinRotation = (-(float)Math.Sin(radians));
+            rotatedMatrix.Identify3();
+            return new Matrix3(   cosRotation,         negSinRotation,    rotatedMatrix.m02,
+                                  sinRotation,      cosRotation,    rotatedMatrix.m12,
+                            rotatedMatrix.m20,   rotatedMatrix.m21,               1);
         }
 
         //to use this function for testing at least: console.writeline(variableName.ToString());
@@ -86,7 +94,7 @@ namespace MathLibrary
             }
         }
 
-        public Matrix3 Identify()
+        public Matrix3 Identify3()
         {
             this = Identified;
             return this;
@@ -130,7 +138,7 @@ namespace MathLibrary
 
         public static Vector3 operator *(Vector3 a, Matrix3 b)
         {
-            return b * a;
+           return b * a;
         }
 
 
