@@ -32,6 +32,10 @@ namespace MathLibrary
             this.m21 = m21;
             this.m22 = m22;
             this.m23 = m23;
+            this.m30 = m30;
+            this.m31 = m31;
+            this.m32 = m32;
+            this.m33 = m33;
         }
 
 
