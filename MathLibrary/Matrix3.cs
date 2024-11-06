@@ -38,7 +38,7 @@ namespace MathLibrary
         public static Matrix3 CreateTranslation(float x, float y)
         {
             Matrix3 translationMatrix = new Matrix3();
-            translationMatrix.Identify3();
+            translationMatrix.Identify3(translationMatrix);
             return new Matrix3(translationMatrix.m00 + x, translationMatrix.m01 + x, translationMatrix.m02,
                                translationMatrix.m10 + y, translationMatrix.m11 + y, translationMatrix.m12,
                                translationMatrix.m20, translationMatrix.m21, translationMatrix.m22);
@@ -47,7 +47,7 @@ namespace MathLibrary
         public static Matrix3 CreateScale(float x, float y)
         {
             Matrix3 scaledMatrix = new Matrix3();
-            scaledMatrix.Identify3();
+            scaledMatrix.Identify3(scaledMatrix);
             return new Matrix3(scaledMatrix.m00 * x, scaledMatrix.m01, scaledMatrix.m02,
                                scaledMatrix.m10,   scaledMatrix.m11 * y, scaledMatrix.m12,
                                scaledMatrix.m20,     scaledMatrix.m21,  scaledMatrix.m22);
@@ -60,7 +60,7 @@ namespace MathLibrary
             float cosRotation = (float)Math.Cos(radians);
             float sinRotation = (float)Math.Sin(radians);
             float negSinRotation = (-(float)Math.Sin(radians));
-            rotatedMatrix.Identify3();
+            rotatedMatrix.Identify3(rotatedMatrix);
             return new Matrix3(   cosRotation,         negSinRotation,    rotatedMatrix.m02,
                                   sinRotation,      cosRotation,    rotatedMatrix.m12,
                             rotatedMatrix.m20,   rotatedMatrix.m21,               1);
@@ -94,10 +94,10 @@ namespace MathLibrary
             }
         }
 
-        public Matrix3 Identify3()
+        public Matrix3 Identify3(Matrix3 other)
         {
-            this = Identified;
-            return this;
+            this = Identity;
+            return this * other;
         }
 
         //operator overload for addition
@@ -131,9 +131,9 @@ namespace MathLibrary
 
         public static Vector3 operator *(Matrix3 a, Vector3 b)
         {
-            return new Vector3((b.x * a.m00) + (b.y * a.m01) + (b.z * a.m02),
-                               (b.x * a.m10) + (b.y * a.m11) + (b.z * a.m12),
-                               (b.x * a.m20) + (b.y * a.m21) + (b.z * a.m22));
+            return new Vector3((a.m00 * b.x) + (a.m01 * b.y) + (a.m02 * b.z),
+                               (a.m10 * b.x) + (a.m11 * b.y) + (a.m12 * b.z),
+                               (a.m20 * b.x) + (a.m21 * b.y) + (a.m22 * b.z));
         }
 
         public static Vector3 operator *(Vector3 a, Matrix3 b)

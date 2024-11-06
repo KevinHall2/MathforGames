@@ -321,7 +321,7 @@ const float DEFAULT_TOLERANCE = 0.0001f;
             Matrix3 m3c = new Matrix3();
             m3c = Matrix3.CreateRotation(9.62f);
 
-            m3c = Transpose(m3c);
+            //m3c = Transpose(m3c);
 
             Vector3 v3a = new Vector3(13.5f, -48.23f, 862);
             Vector3 v3c = m3c * v3a;
@@ -337,7 +337,7 @@ const float DEFAULT_TOLERANCE = 0.0001f;
             Matrix4 m4b = new Matrix4();
             m4b = Matrix4.CreateRotationY(-2.6f);
 
-            m4b = Transpose(m4b);
+            //m4b = Transpose(m4b);
 
             Vector4 v4a = new Vector4(13.5f, -48.23f, 862, 0);
             Vector4 v4b = m4b * v4a;
@@ -353,7 +353,7 @@ const float DEFAULT_TOLERANCE = 0.0001f;
             Matrix4 m4c = new Matrix4();
             m4c = Matrix4.CreateRotationZ(0.72f);
 
-            m4c = Transpose(m4c);
+            //m4c = Transpose(m4c);
 
             Vector4 v4a = new Vector4(13.5f, -48.23f, 862, 0);
             Vector4 v4b = m4c * v4a;

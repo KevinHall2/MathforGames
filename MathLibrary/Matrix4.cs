@@ -38,7 +38,7 @@ namespace MathLibrary
         public static Matrix4 CreateTranslation(float x, float y, float z)
         {
             Matrix4 translationMatrix = new Matrix4();
-            translationMatrix.Identify4();
+            translationMatrix.Identify4(translationMatrix);
             return new Matrix4(translationMatrix.m00 + x, translationMatrix.m01 + y, translationMatrix.m02 + z, translationMatrix.m03,
                                translationMatrix.m10 + x, translationMatrix.m11 + y, translationMatrix.m12 + z, translationMatrix.m13,
                                translationMatrix.m20 + x, translationMatrix.m21 + y, translationMatrix.m22 + z, translationMatrix.m23,
@@ -48,7 +48,7 @@ namespace MathLibrary
         public static Matrix4 CreateScale(float x, float y, float z)
         {
             Matrix4 scaledMatrix = new Matrix4();
-            scaledMatrix.Identify4();
+            scaledMatrix.Identify4(scaledMatrix);
             return new Matrix4(scaledMatrix.m00 * x, scaledMatrix.m01, scaledMatrix.m02, scaledMatrix.m03,
                                scaledMatrix.m10,  scaledMatrix.m11 * y, scaledMatrix.m12, scaledMatrix.m13,
                                scaledMatrix.m20, scaledMatrix.m21, scaledMatrix.m22 * z, scaledMatrix.m23,
@@ -63,7 +63,7 @@ namespace MathLibrary
             float sinRotation = (float)Math.Sin(radians);
             float negSinRotation = (float)-Math.Sin(radians);
 
-            rotatedMatrix.Identify4();
+            rotatedMatrix.Identify4(rotatedMatrix);
             return new Matrix4(               1, rotatedMatrix.m01, rotatedMatrix.m02, rotatedMatrix.m03,
                                rotatedMatrix.m10,       cosRotation,       negSinRotation, rotatedMatrix.m13,
                                rotatedMatrix.m20,    sinRotation,       cosRotation, rotatedMatrix.m23,
@@ -81,7 +81,7 @@ namespace MathLibrary
             float sinRotation = (float)Math.Sin(radians);
             float negSinRotation = (float)-Math.Sin(radians);
 
-            rotatedMatrix.Identify4();
+            rotatedMatrix.Identify4(rotatedMatrix);
             return new Matrix4(cosRotation, rotatedMatrix.m01,     sinRotation, rotatedMatrix.m03,
                           rotatedMatrix.m10,                1, rotatedMatrix.m12, rotatedMatrix.m13,
                              negSinRotation, rotatedMatrix.m21,     cosRotation, rotatedMatrix.m23,
@@ -96,10 +96,10 @@ namespace MathLibrary
             float sinRotation = (float)Math.Sin(radians);
             float negSinRotation = (float)-Math.Sin(radians);
 
-            rotatedMatrix.Identify4();
+            rotatedMatrix.Identify4(rotatedMatrix);
             return new Matrix4( cosRotation,       negSinRotation, rotatedMatrix.m02, rotatedMatrix.m03,
                                 sinRotation,          cosRotation, rotatedMatrix.m12, rotatedMatrix.m13,
-                          rotatedMatrix.m20,    rotatedMatrix.m21,                 1, rotatedMatrix.m32,
+                          rotatedMatrix.m20,    rotatedMatrix.m21, rotatedMatrix.m22, rotatedMatrix.m32,
                           rotatedMatrix.m30,    rotatedMatrix.m31, rotatedMatrix.m32, rotatedMatrix.m33);
         }
 
@@ -133,10 +133,10 @@ namespace MathLibrary
             }
         }
 
-        public Matrix4 Identify4()
+        public Matrix4 Identify4(Matrix4 other)
         {
-            this = Identified;
-            return this;
+            this = Identity;
+            return this * other;
         }
 
         //operator overload for addition
@@ -193,10 +193,10 @@ namespace MathLibrary
 
         public static Vector4 operator *(Matrix4 a, Vector4 b)
         {
-            return new Vector4((b.x * a.m00) + (b.y * a.m01) + (b.z * a.m02) + (b.w * a.m03),
-                               (b.x * a.m10) + (b.y * a.m11) + (b.z * a.m12) + (b.w * a.m13),
-                               (b.x * a.m20) + (b.y * a.m21) + (b.z * a.m22) + (b.w * a.m23),
-                               (b.x * a.m30) + (b.y * a.m31) + (b.z * a.m32) + (b.w * a.m33));
+            return new Vector4((a.m00 * b.x) + (a.m01 * b.y) + (a.m02 * b.z) + (a.m03 * b.w),
+                               (a.m10 * b.x) + (a.m11 * b.y) + (a.m12 * b.z) + (a.m13 * b.w),
+                               (a.m20 * b.x) + (a.m21 * b.y) + (a.m22 * b.z) + (a.m23 * b.w),
+                               (a.m30 * b.x) + (a.m31 * b.y) + (a.m32 * b.z) + (a.m33 * b.w));
         }
 
         public static Vector4 operator *(Vector4 a, Matrix4 b)
