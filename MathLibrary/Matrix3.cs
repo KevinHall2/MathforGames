@@ -39,8 +39,8 @@ namespace MathLibrary
         {
             Matrix3 translationMatrix = new Matrix3();
             translationMatrix.Identify3(translationMatrix);
-            return new Matrix3(translationMatrix.m00 + x, translationMatrix.m01 + x, translationMatrix.m02,
-                               translationMatrix.m10 + y, translationMatrix.m11 + y, translationMatrix.m12,
+            return new Matrix3(translationMatrix.m00, translationMatrix.m01, translationMatrix.m02 + x,
+                               translationMatrix.m10, translationMatrix.m11, translationMatrix.m12 + y,
                                translationMatrix.m20, translationMatrix.m21, translationMatrix.m22);
         }
 
