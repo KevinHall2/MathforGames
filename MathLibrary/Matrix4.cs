@@ -129,13 +129,6 @@ namespace MathLibrary
             }
         }
 
-        public Matrix4 Identified
-        {
-            get
-            {
-                return this * Identity;
-            }
-        }
 
         public Matrix4 Identify4(Matrix4 other)
         {

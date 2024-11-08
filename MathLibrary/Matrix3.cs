@@ -86,14 +86,6 @@ namespace MathLibrary
             }
         }
 
-        public Matrix3 Identified
-        {
-            get
-            {
-                return this * Identity;
-            }
-        }
-
         public Matrix3 Identify3(Matrix3 other)
         {
             this = Identity;

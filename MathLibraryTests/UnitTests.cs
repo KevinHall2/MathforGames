@@ -2,8 +2,6 @@ using MathLibrary;
 
 namespace MathLibraryTests
 {
-
-    //
     [TestClass]
     public class UnitTests
     {
