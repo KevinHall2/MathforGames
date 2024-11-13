@@ -38,7 +38,7 @@ namespace MathLibrary
         public static Matrix3 CreateTranslation(float x, float y)
         {
             Matrix3 translationMatrix = new Matrix3();
-            translationMatrix.Identify3(translationMatrix);
+            translationMatrix.Identify(translationMatrix);
             return new Matrix3(translationMatrix.m00, translationMatrix.m01, translationMatrix.m02 + x,
                                translationMatrix.m10, translationMatrix.m11, translationMatrix.m12 + y,
                                translationMatrix.m20, translationMatrix.m21, translationMatrix.m22);
@@ -47,7 +47,7 @@ namespace MathLibrary
         public static Matrix3 CreateScale(float x, float y)
         {
             Matrix3 scaledMatrix = new Matrix3();
-            scaledMatrix.Identify3(scaledMatrix);
+            scaledMatrix.Identify(scaledMatrix);
             return new Matrix3(scaledMatrix.m00 * x, scaledMatrix.m01, scaledMatrix.m02,
                                scaledMatrix.m10,   scaledMatrix.m11 * y, scaledMatrix.m12,
                                scaledMatrix.m20,     scaledMatrix.m21,  scaledMatrix.m22);
@@ -60,7 +60,7 @@ namespace MathLibrary
             float cosRotation = (float)Math.Cos(radians);
             float sinRotation = (float)Math.Sin(radians);
             float negSinRotation = (-(float)Math.Sin(radians));
-            rotatedMatrix.Identify3(rotatedMatrix);
+            rotatedMatrix.Identify(rotatedMatrix);
             return new Matrix3(   cosRotation,         negSinRotation,    rotatedMatrix.m02,
                                   sinRotation,      cosRotation,    rotatedMatrix.m12,
                             rotatedMatrix.m20,   rotatedMatrix.m21,               1);
@@ -86,7 +86,7 @@ namespace MathLibrary
             }
         }
 
-        public Matrix3 Identify3(Matrix3 other)
+        public Matrix3 Identify(Matrix3 other)
         {
             this = Identity;
             return this * other;

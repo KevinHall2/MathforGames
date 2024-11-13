@@ -90,3 +90,8 @@
 | Implicit Conversion for Math.Library.Vector4 `System.Numerics.Vector2(Vector4 vector)` | Makes an implicit conversion as stated in the [Vector2 class](#vector2class-id), but for Vector4s instead |
 
 ### Matrix 3 Class {matrix3class-id}
+
+|  Struct Properties | Purpose  |
+|---|---|
+|  Struct Variables m00, m01, m02, m10, m11, m12, m20, m21, m22 | These store the x1(m00), x2(m01), x3(m02), y1(m10), y2(m11), y3(m12), z1(m20), z2(m21), and z3(m22) values of the Matrix3  |
+| Identity Property  | Returns a Matrix3 with the values of 1(m00), 0(m01), 0(m02), 0(m10), 1(m11), 0(m12), 0(m20), 0(m21), and 1(m22) and is called in the Identify function  |

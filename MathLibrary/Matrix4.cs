@@ -42,7 +42,7 @@ namespace MathLibrary
         public static Matrix4 CreateTranslation(float x, float y, float z)
         {
             Matrix4 translationMatrix = new Matrix4();
-            translationMatrix.Identify4(translationMatrix);
+            translationMatrix.Identify(translationMatrix);
             return new Matrix4(translationMatrix.m00 + x, translationMatrix.m01 + y, translationMatrix.m02 + z, translationMatrix.m03,
                                translationMatrix.m10 + x, translationMatrix.m11 + y, translationMatrix.m12 + z, translationMatrix.m13,
                                translationMatrix.m20 + x, translationMatrix.m21 + y, translationMatrix.m22 + z, translationMatrix.m23,
@@ -52,7 +52,7 @@ namespace MathLibrary
         public static Matrix4 CreateScale(float x, float y, float z)
         {
             Matrix4 scaledMatrix = new Matrix4();
-            scaledMatrix.Identify4(scaledMatrix);
+            scaledMatrix.Identify(scaledMatrix);
             return new Matrix4(scaledMatrix.m00 * x, scaledMatrix.m01, scaledMatrix.m02, scaledMatrix.m03,
                                scaledMatrix.m10,  scaledMatrix.m11 * y, scaledMatrix.m12, scaledMatrix.m13,
                                scaledMatrix.m20, scaledMatrix.m21, scaledMatrix.m22 * z, scaledMatrix.m23,
@@ -67,7 +67,7 @@ namespace MathLibrary
             float sinRotation = (float)Math.Sin(radians);
             float negSinRotation = (float)-Math.Sin(radians);
 
-            rotatedMatrix.Identify4(rotatedMatrix);
+            rotatedMatrix.Identify(rotatedMatrix);
             return new Matrix4(               1, rotatedMatrix.m01, rotatedMatrix.m02, rotatedMatrix.m03,
                                rotatedMatrix.m10,       cosRotation,       negSinRotation, rotatedMatrix.m13,
                                rotatedMatrix.m20,    sinRotation,       cosRotation, rotatedMatrix.m23,
@@ -85,7 +85,7 @@ namespace MathLibrary
             float sinRotation = (float)Math.Sin(radians);
             float negSinRotation = (float)-Math.Sin(radians);
 
-            rotatedMatrix.Identify4(rotatedMatrix);
+            rotatedMatrix.Identify(rotatedMatrix);
             return new Matrix4(cosRotation, rotatedMatrix.m01,     sinRotation, rotatedMatrix.m03,
                           rotatedMatrix.m10,                1, rotatedMatrix.m12, rotatedMatrix.m13,
                              negSinRotation, rotatedMatrix.m21,     cosRotation, rotatedMatrix.m23,
@@ -100,7 +100,7 @@ namespace MathLibrary
             float sinRotation = (float)Math.Sin(radians);
             float negSinRotation = (float)-Math.Sin(radians);
 
-            rotatedMatrix.Identify4(rotatedMatrix);
+            rotatedMatrix.Identify(rotatedMatrix);
             return new Matrix4( cosRotation,       negSinRotation, rotatedMatrix.m02, rotatedMatrix.m03,
                                 sinRotation,          cosRotation, rotatedMatrix.m12, rotatedMatrix.m13,
                           rotatedMatrix.m20,    rotatedMatrix.m21, rotatedMatrix.m22, rotatedMatrix.m32,
@@ -130,7 +130,7 @@ namespace MathLibrary
         }
 
 
-        public Matrix4 Identify4(Matrix4 other)
+        public Matrix4 Identify(Matrix4 other)
         {
             this = Identity;
             return this * other;
