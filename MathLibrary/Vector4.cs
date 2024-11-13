@@ -35,7 +35,7 @@ namespace MathLibrary
             {
                 get
                 {
-                    //c = sqrt(x^2 + y^2)
+                    //c = sqrt(x^2 + y^2 + z^2 + w^2)
                     return (float)Math.Abs(Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2) + Math.Pow(w, 2)));
                 }
             }
@@ -95,7 +95,7 @@ namespace MathLibrary
             public Vector4 CrossProduct(Vector4 left, Vector4 right)
             {
                 return new Vector4((left.y * right.z) - (left.z * right.y), (left.z * right.x) - (left.x * right.z), 
-                                   (left.x * right.y) - (left.y * right.x), (left.w * right.x) - (left.x * right.w));
+                                   (left.x * right.y) - (left.y * right.x), 0);
             }
 
             public Vector4 CrossProduct(Vector4 other)
