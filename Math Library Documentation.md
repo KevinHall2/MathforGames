@@ -93,7 +93,7 @@
 
 |  Struct Properties | Purpose  |
 |---|---|
-|  Struct Variables m00, m01, m02, m10, m11, m12, m20, m21, m22 | These store the x1(m00), x2(m01), x3(m02), y1(m10), y2(m11), y3(m12), z1(m20), z2(m21), and z3(m22) values of the Matrix3  |
+|  Struct Variables m00, m01, m02, m10, m11, m12, m20, m21, m22 | These store the x1(m00), y1(m01), z1(m02), x2(m10), y2(m11), z2(m12), x3(m20), y3(m21), and z3(m22) values of the Matrix3  |
 | Identity Property  | Returns a Matrix3 with the values of 1(m00), 0(m01), 0(m02), 0(m10), 1(m11), 0(m12), 0(m20), 0(m21), and 1(m22) and is called in the Identify function  |
 
 | Functions  | Purpose  |
@@ -112,3 +112,16 @@
 | Vector Multiplication  | Returns the product of a Matrix3 and a Vector3 as a Vector3. Acquires the product for the x, y, and z positions of the Vector3 by multiplying the Vector3 variables by the variables in a column and adding them together. Example of the X position: `(a.m00 * b.x) + (a.m01 * b.y) + (a.m02 * b.z),` |
 
 ### Matrix 4 Class {matrix4class-id}
+
+|  Struct Properties | Purpose  |
+|---|---|
+|  Struct Variables m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33 | These store the x1(m00), y1(m01), z1(m02), w1(m03), x2(m10), y2(m11), z2(m12), w2(m13), x3(m20), y3(m21), z3(m22), w3(m23), x4(m30), y4(m31), z4(m32), w4(m33) values of the Matrix4  |
+| Identity Property  | Returns a Matrix4 with the values of 1(m00), 0(m01), 0(m02), 0(m03), 0(m10), 1(m11), 0(m12), 0(m13), 0(m20), 0(m21), 1(m22), 0(m23), 0(m30), 0(m31), 0(m32), 1(m33) and is called in the Identity() function  |
+
+| Functions  | Purpose  |
+|---|---|
+| Identify(Matrix4 other) | Works as the Identify(Matrix3 other) in the [Matrix3 class](#matrix3class-id) but uses Matrix4s instead. Arguments are also called in the same way as they are in the Matrix3 version of this function |
+|  CreateTranslation(float x, float y, float z) | Returns a new Matrix4 that has been identified as per the Identify(Matrix4 other) function, has the given x float variable added to the m03 position of the Matrix4, has the given y float variable added to the m13 position of the Matrix4, and has the given z float variable added to the m23 position of the Matrix4  |
+|  CreateScale(float x, float y, float z) | Returns a new Matrix4 that has been identified as per the Identify(Matrix4 other) function, has the m00 position being multiplied by the given x float value, has the m11 position being multiplied by the given y float value, and has the m22 position being multiplied by the given z float value  |
+| CreateRotationX(float radians)  |   |
+|   |   |
