@@ -43,10 +43,10 @@ namespace MathLibrary
         {
             Matrix4 translationMatrix = new Matrix4();
             translationMatrix.Identify(translationMatrix);
-            return new Matrix4(translationMatrix.m00 + x, translationMatrix.m01 + y, translationMatrix.m02 + z, translationMatrix.m03,
-                               translationMatrix.m10 + x, translationMatrix.m11 + y, translationMatrix.m12 + z, translationMatrix.m13,
-                               translationMatrix.m20 + x, translationMatrix.m21 + y, translationMatrix.m22 + z, translationMatrix.m23,
-                               translationMatrix.m30 + x, translationMatrix.m31 + y, translationMatrix.m32 + z, translationMatrix.m33);
+            return new Matrix4(translationMatrix.m00, translationMatrix.m01, translationMatrix.m02, translationMatrix.m03 + x,
+                               translationMatrix.m10, translationMatrix.m11, translationMatrix.m12, translationMatrix.m13 + y,
+                               translationMatrix.m20, translationMatrix.m21, translationMatrix.m22, translationMatrix.m23 + z,
+                               translationMatrix.m30, translationMatrix.m31, translationMatrix.m32, translationMatrix.m33);
         }
 
         public static Matrix4 CreateScale(float x, float y, float z)
@@ -72,9 +72,7 @@ namespace MathLibrary
                                rotatedMatrix.m10,       cosRotation,       negSinRotation, rotatedMatrix.m13,
                                rotatedMatrix.m20,    sinRotation,       cosRotation, rotatedMatrix.m23,
                                                0,            0,            0,                1);
-
-
-            // rotatedMatrix.m11 = Math.Cos(radians),
+            
         }
 
         public static Matrix4 CreateRotationY(float radians)
@@ -104,7 +102,7 @@ namespace MathLibrary
             return new Matrix4( cosRotation,       negSinRotation, rotatedMatrix.m02, rotatedMatrix.m03,
                                 sinRotation,          cosRotation, rotatedMatrix.m12, rotatedMatrix.m13,
                           rotatedMatrix.m20,    rotatedMatrix.m21, rotatedMatrix.m22, rotatedMatrix.m32,
-                          rotatedMatrix.m30,    rotatedMatrix.m31, rotatedMatrix.m32, rotatedMatrix.m33);
+                                         0,                    0,                 0,                1);
         }
 
         //to use this function for testing at least: console.writeline(variableName.ToString());

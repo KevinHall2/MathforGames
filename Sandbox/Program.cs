@@ -27,9 +27,11 @@ namespace Sandbox
             float playerViewAngle = 90;
             float playerViewDistance = 300;
 
-            Matrix4 testVector = new Matrix4(1, 2, 3, 4, 4, 3, 2, 1, 1, 2, 3, 4, 4, 3, 2, 1);
-            testVector = Matrix4.CreateTranslation(4,1,4);
-            Console.WriteLine(testVector.ToString());
+            Matrix3 testVector1 = new Matrix3();
+            testVector1 = Matrix3.CreateScale(4,5);
+            Matrix3 testVector2 = new Matrix3(1, 2, 3, 3, 2, 1, 1, 2, 3);
+            Matrix3 resultVector = testVector1 * testVector2;
+            Console.WriteLine(resultVector.ToString());
 
  
               while (!Raylib.WindowShouldClose())

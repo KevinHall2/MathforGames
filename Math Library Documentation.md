@@ -95,3 +95,20 @@
 |---|---|
 |  Struct Variables m00, m01, m02, m10, m11, m12, m20, m21, m22 | These store the x1(m00), x2(m01), x3(m02), y1(m10), y2(m11), y3(m12), z1(m20), z2(m21), and z3(m22) values of the Matrix3  |
 | Identity Property  | Returns a Matrix3 with the values of 1(m00), 0(m01), 0(m02), 0(m10), 1(m11), 0(m12), 0(m20), 0(m21), and 1(m22) and is called in the Identify function  |
+
+| Functions  | Purpose  |
+|---|---|
+| Identify(Matrix3 other) | Returns the product of two Matrix3s; the first Matrix3 used is an identity matrix provided by the Identity property, and the second Matrix3 used is called as an argument for the function. Example for calling an argument: `rotatedMatrix.Identify(rotatedMatrix);`|
+| CreateTranslation(float x, float y)  | Returns a new Matrix3 that has been identified as per the Identify(Matrix3 other) function, has the given x float variable added to the m02 position of the Matrix3, and has the given y float variable added to the m12 position of the Matrix3  |
+|  CreateScale(float x, float y) | Returns a new Matrix3 that has been identified as per the Identify(Matrix3 other) function, has the m00 position being multiplied by the given x float value, and has the m11 position being multiplied by the given y float value   |
+|  CreateRotation(float radians) | Contains three float variables that calculate the Sin, Cosine, and negative Sine of the radian value provided as an argument of the function. These are then used to return a new Matrix3 that has been identified as per the Identity(Matrix3 other) function, has the m00 position replaced with the value given by the Cosine variable, has the m01 position replaced with the value given by the negative Sine variable, has the m10 position replaced with the value given by the Sine variable, and has the m11 position repalced with the value given by the Cosine variable |
+|  ToString() | Returns the Matrix3 as a string for display purposes  |
+
+|  Operator Overloads | Purpose  |
+|---|---|
+| Addition  |  Allows for addition with two Matrix3s and returns the sum of their respective variables |
+| Subtraction  |  Allows for subtraction with two Matrix3s and returns the difference of their respective variables |
+| Matrix Multiplication  | Returns the product of two Matrix3s. Acquires the product for each position of the Matrix3 by multiplying the values in a row by the values in a column, and then adding them together. Example of the m00 position: `(a.m00 * b.m00) + (a.m01 * b.m10) + (a.m02 * b.m20),`  |
+| Vector Multiplication  | Returns the product of a Matrix3 and a Vector3 as a Vector3. Acquires the product for the x, y, and z positions of the Vector3 by multiplying the Vector3 variables by the variables in a column and adding them together. Example of the X position: `(a.m00 * b.x) + (a.m01 * b.y) + (a.m02 * b.z),` |
+
+### Matrix 4 Class {matrix4class-id}
