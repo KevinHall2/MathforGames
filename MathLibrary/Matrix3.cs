@@ -37,8 +37,8 @@ namespace MathLibrary
 
         public static Matrix3 CreateTranslation(float x, float y)
         {
-            Matrix3 translationMatrix = new Matrix3();
-            translationMatrix.Identify(translationMatrix);
+            Matrix3 translationMatrix = Identity;
+
             return new Matrix3(translationMatrix.m00, translationMatrix.m01, translationMatrix.m02 + x,
                                translationMatrix.m10, translationMatrix.m11, translationMatrix.m12 + y,
                                translationMatrix.m20, translationMatrix.m21, translationMatrix.m22);
@@ -46,8 +46,8 @@ namespace MathLibrary
 
         public static Matrix3 CreateScale(float x, float y)
         {
-            Matrix3 scaledMatrix = new Matrix3();
-            scaledMatrix.Identify(scaledMatrix);
+            Matrix3 scaledMatrix = Identity;
+
             return new Matrix3(scaledMatrix.m00 * x, scaledMatrix.m01, scaledMatrix.m02,
                                scaledMatrix.m10,   scaledMatrix.m11 * y, scaledMatrix.m12,
                                scaledMatrix.m20,     scaledMatrix.m21,  scaledMatrix.m22);
@@ -55,15 +55,15 @@ namespace MathLibrary
 
         public static Matrix3 CreateRotation(float radians)
         {
-            Matrix3 rotatedMatrix = new Matrix3();
+            Matrix3 rotatedMatrix = Identity;
 
             float cosRotation = (float)Math.Cos(radians);
             float sinRotation = (float)Math.Sin(radians);
             float negSinRotation = (-(float)Math.Sin(radians));
-            rotatedMatrix.Identify(rotatedMatrix);
+
             return new Matrix3(   cosRotation,         negSinRotation,    rotatedMatrix.m02,
-                                  sinRotation,      cosRotation,    rotatedMatrix.m12,
-                            rotatedMatrix.m20,   rotatedMatrix.m21,               1);
+                                  sinRotation,            cosRotation,    rotatedMatrix.m12,
+                            rotatedMatrix.m20,      rotatedMatrix.m21,    rotatedMatrix.m22);
         }
 
         //to use this function for testing at least: console.writeline(variableName.ToString());

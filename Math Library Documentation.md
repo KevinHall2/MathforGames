@@ -48,7 +48,10 @@
 |  Normalize() | Normalizes the Vector3 as per the Normalize() function in the [Vector2 class](#vector2class-id)  |
 |  ToString() | Returns the vector as a string as per the ToString() function in the [Vector2 class](#vector2class-id)  |
 | DotProduct(Vector3 left, Vector3 right) or DotProduct(Vector3 other) as an overload | Returns the dot product of two Vector3s as per the DotProduct(Vector2 other) function in the [Vector2 class](#vector2class-id), but uses the x, y, and z variables instead of just x and y  |
-| CrossProduct(Vector3 other) or CrossProduct(Vector3 left, Vector3 right) as an overload   |  Returns the cross product of two Vector3s ```return new Vector3((this.y * other.z) - (this.z * other.y), (this.z * other.x) - (this.x * other.z), (this.x * other.y) - (this.y * other.x));```|
+| CrossProduct(Vector3 other) or CrossProduct(Vector3 left, Vector3 right) as an overload   |  Returns the cross product of two Vector3s |
+```
+return new Vector3((this.y * other.z) - (this.z * other.y), (this.z * other.x) - (this.x * other.z), (this.x * other.y) - (this.y * other.x));
+```
 
 |  Operator Overloads |  Purpose |
 |---|---|
@@ -95,13 +98,26 @@
 |---|---|
 |  Struct Variables m00, m01, m02, m10, m11, m12, m20, m21, m22 | These store the x1(m00), y1(m01), z1(m02), x2(m10), y2(m11), z2(m12), x3(m20), y3(m21), and z3(m22) values of the Matrix3  |
 | Identity Property  | Returns a Matrix3 with the values of 1(m00), 0(m01), 0(m02), 0(m10), 1(m11), 0(m12), 0(m20), 0(m21), and 1(m22) and is called in the Identify function  |
+```
+return new Matrix3
+                    (1, 0, 0, 
+                     0, 1, 0, 
+                     0, 0, 1);
+```
 
 | Functions  | Purpose  |
 |---|---|
 | Identify(Matrix3 other) | Returns the product of two Matrix3s; the first Matrix3 used is an identity matrix provided by the Identity property, and the second Matrix3 used is called as an argument for the function. Example for calling an argument: `rotatedMatrix.Identify(rotatedMatrix);`|
 | CreateTranslation(float x, float y)  | Returns a new Matrix3 that has been identified as per the Identify(Matrix3 other) function, has the given x float variable added to the m02 position of the Matrix3, and has the given y float variable added to the m12 position of the Matrix3  |
 |  CreateScale(float x, float y) | Returns a new Matrix3 that has been identified as per the Identify(Matrix3 other) function, has the m00 position being multiplied by the given x float value, and has the m11 position being multiplied by the given y float value   |
-|  CreateRotation(float radians) | Contains three float variables that calculate the Sin, Cosine, and negative Sine of the radian value provided as an argument of the function. These are then used to return a new Matrix3 that has been identified as per the Identity(Matrix3 other) function, has the m00 position replaced with the value given by the Cosine variable, has the m01 position replaced with the value given by the negative Sine variable, has the m10 position replaced with the value given by the Sine variable, and has the m11 position repalced with the value given by the Cosine variable |
+|  CreateRotation(float radians) | Contains three float variables that calculate the Sine, Cosine, and negative Sine of the radians variable provided as an argument of the function. These are then used to return an Identity Matrix3 that has the m00 position replaced with the value given by the Cosine variable, has the m01 position replaced with the value given by the negative Sine variable, has the m10 position replaced with the value given by the Sine variable, and has the m11 position repalced with the value given by the Cosine variable |
+```
+ return new Matrix3(   cosRotation,         negSinRotation,    rotatedMatrix.m02,
+                       sinRotation,            cosRotation,    rotatedMatrix.m12,
+                 rotatedMatrix.m20,      rotatedMatrix.m21,    rotatedMatrix.m22);
+```
+| | |
+|
 |  ToString() | Returns the Matrix3 as a string for display purposes  |
 
 |  Operator Overloads | Purpose  |
@@ -117,11 +133,64 @@
 |---|---|
 |  Struct Variables m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33 | These store the x1(m00), y1(m01), z1(m02), w1(m03), x2(m10), y2(m11), z2(m12), w2(m13), x3(m20), y3(m21), z3(m22), w3(m23), x4(m30), y4(m31), z4(m32), w4(m33) values of the Matrix4  |
 | Identity Property  | Returns a Matrix4 with the values of 1(m00), 0(m01), 0(m02), 0(m03), 0(m10), 1(m11), 0(m12), 0(m13), 0(m20), 0(m21), 1(m22), 0(m23), 0(m30), 0(m31), 0(m32), 1(m33) and is called in the Identity() function  |
-
+```
+                return new Matrix4
+                    (1, 0, 0, 0,
+                     0, 1, 0, 0,
+                     0, 0, 1, 0,
+                     0, 0, 0, 1);
+```
 | Functions  | Purpose  |
 |---|---|
 | Identify(Matrix4 other) | Works as the Identify(Matrix3 other) in the [Matrix3 class](#matrix3class-id) but uses Matrix4s instead. Arguments are also called in the same way as they are in the Matrix3 version of this function |
-|  CreateTranslation(float x, float y, float z) | Returns a new Matrix4 that has been identified as per the Identify(Matrix4 other) function, has the given x float variable added to the m03 position of the Matrix4, has the given y float variable added to the m13 position of the Matrix4, and has the given z float variable added to the m23 position of the Matrix4  |
-|  CreateScale(float x, float y, float z) | Returns a new Matrix4 that has been identified as per the Identify(Matrix4 other) function, has the m00 position being multiplied by the given x float value, has the m11 position being multiplied by the given y float value, and has the m22 position being multiplied by the given z float value  |
-| CreateRotationX(float radians)  |   |
-|   |   |
+|  CreateTranslation(float x, float y, float z) | Returns an Identity Matrix4 that has the given x float variable added to the m03 position of the Matrix4, has the given y float variable added to the m13 position of the Matrix4, and has the given z float variable added to the m23 position of the Matrix4  |
+```
+return new Matrix4(translationMatrix.m00, translationMatrix.m01, translationMatrix.m02, translationMatrix.m03 + x,
+                   translationMatrix.m10, translationMatrix.m11, translationMatrix.m12, translationMatrix.m13 + y,
+                   translationMatrix.m20, translationMatrix.m21, translationMatrix.m22, translationMatrix.m23 + z,
+                   translationMatrix.m30, translationMatrix.m31, translationMatrix.m32, translationMatrix.m33);
+```
+
+| | |
+|
+|  CreateScale(float x, float y, float z) | Returns an Identity Matrix4 that has the m00 position being multiplied by the given x float value, has the m11 position being multiplied by the given y float value, and has the m22 position being multiplied by the given z float value  |
+```
+            return new Matrix4(scaledMatrix.m00 * x, scaledMatrix.m01, scaledMatrix.m02, scaledMatrix.m03,
+                               scaledMatrix.m10,  scaledMatrix.m11 * y, scaledMatrix.m12, scaledMatrix.m13,
+                               scaledMatrix.m20, scaledMatrix.m21, scaledMatrix.m22 * z, scaledMatrix.m23,
+                               scaledMatrix.m30, scaledMatrix.m31, scaledMatrix.m32, scaledMatrix.m33);
+```
+| | |
+| | |
+| CreateRotationX(float radians)  |  This rotates the Matrix4 around the x axis, and contains three float variables that calculate the Sine, Cosine, and negative Sine of the radians variable. These are then used to return a new Identity Matrix4 that has the m11, m12, m21, and m22 positions replaced with the values given by the Sine, Cosine, and negative Sine variables.    |
+``` 
+            return new Matrix4(rotatedMatrix.m00, rotatedMatrix.m01,    rotatedMatrix.m02, rotatedMatrix.m03,
+                               rotatedMatrix.m10,       cosRotation,       negSinRotation, rotatedMatrix.m13,
+                               rotatedMatrix.m20,       sinRotation,          cosRotation, rotatedMatrix.m23,
+                               rotatedMatrix.m30, rotatedMatrix.m31,    rotatedMatrix.m32, rotatedMatrix.m33);
+```
+| | |
+| | |
+| CreateRotationY(float radians)  | This rotates the Matrix4 around the y axis, and contains three float variables that have the same purpose that they have in the CreateRotationX() function. These variables are then used to return a new Identity Matrix4 that has the m00, m02, m20, and m22 positions replaced with the values given by those variables.  |
+```
+return new Matrix4(cosRotation,  rotatedMatrix.m01,       sinRotation, rotatedMatrix.m03,
+             rotatedMatrix.m10,  rotatedMatrix.m11, rotatedMatrix.m12, rotatedMatrix.m13,
+                negSinRotation,  rotatedMatrix.m21,       cosRotation, rotatedMatrix.m23,
+             rotatedMatrix.m30,  rotatedMatrix.m31, rotatedMatrix.m32, rotatedMatrix.m33);
+```
+| | |
+|
+| CreateRotationZ(float radians)  | This rotates the Matrix4 around the z axis, and contains three float variables that have the same purpose that they have in the CreateRotationY() and CreateRotationX() functions. These variables are then used to return a new Identity Matrix4 that has the m00, m01, m10, and m11 positions replaced with the values given by those variables. |
+```
+return new Matrix4( cosRotation,       negSinRotation, rotatedMatrix.m02, rotatedMatrix.m03,
+                    sinRotation,          cosRotation, rotatedMatrix.m12, rotatedMatrix.m13,
+              rotatedMatrix.m20,    rotatedMatrix.m21, rotatedMatrix.m22, rotatedMatrix.m32,
+              rotatedMatrix.m30,    rotatedMatrix.m31, rotatedMatrix.m32, rotatedMatrix.m33);
+```
+| | |
+|
+| ToString() | Returns the Matrix4 as a string for display purposes |
+
+| Operator Overloads| Purpose|
+|---|---|
+| | |
